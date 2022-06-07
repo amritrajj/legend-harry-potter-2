@@ -43,7 +43,7 @@
 **A modular Telegram Python bot running on python3 with a sqlalchemy, redis, telethon.**
 
 ## How to set up/deploy.
-
+https://dashboard.heroku.com/new?template=https://github.com/amritraj2008/legend-harry-potter-2
 <details>
   <summary>Step to self Host!!</summary>
 
