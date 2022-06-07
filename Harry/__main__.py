@@ -42,7 +42,7 @@ from telegram.ext import (
 from telegram.ext.dispatcher import DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
-from zeldris import (
+from Harry import (
     dispatcher,
     updater,
     StartTime,
@@ -59,12 +59,12 @@ from zeldris import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from zeldris.modules import ALL_MODULES
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.chat_status import is_user_admin
-from zeldris.modules.helper_funcs.misc import paginate_modules
-from zeldris.modules.purge import client
-from zeldris.modules.no_sql import users_db as db
+from Harry.modules import ALL_MODULES
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.chat_status import is_user_admin
+from Harry.modules.helper_funcs.misc import paginate_modules
+from Harry.modules.purge import client
+from Harry.modules.no_sql import users_db as db
 
 
 def get_readable_time(seconds: int) -> str:
@@ -93,17 +93,17 @@ def get_readable_time(seconds: int) -> str:
 
 
 # sourcery skip: raise-specific-error
-ZELDRIS_IMG = "https://telegra.ph/file/1fa00785f30375c0c1b50.jpg"
+HARRY_IMG = "https://telegra.ph/file/47194f8cfe2b2a98a3adb.jpg"
 
 PM_START_TEXT = """
 Hey there! my name is *{}*. 
-A modular group management bot with useful features. [ㅤ](https://telegra.ph/file/fed9ba09e9add9b197c21.png)
+A modular group management bot with useful features. [ㅤ](https://telegra.ph/file/47194f8cfe2b2a98a3adb.jpg)
 
 ◑ *Uptime:* `{}`
 ◑ `{}` *Users, across* `{}` *chats.*
 
 Any issues or need help related to me?
-Join our official group [IDNCoderX](https://t.me/IDNCoderX).
+Join our official group [Tech Sav Bots](https://t.me/tech_sav_bot).
 Click help button to know my commands!
 """
 
@@ -115,13 +115,13 @@ buttons = [
         ),
         InlineKeyboardButton(
             text="Updates 📢",
-            url="https://t.me/IDNCoder",
+            url="https://t.me/tech_sav_bots",
         ),
     ],
     [
         InlineKeyboardButton(
-            text="Add Zeldris to Your Group 👥",
-            url="t.me/ZeldrisRobot?startgroup=true",
+            text="Add Harry to Your Group 👥",
+            url="t.me/legend_harry_bot?startgroup=true",
         ),
     ],
 ]
@@ -151,7 +151,7 @@ USER_SETTINGS = {}
 GDPR = []
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("zeldris.modules." + module_name)
+    imported_module = importlib.import_module("Harry.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -257,7 +257,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         message.reply_photo(
-            ZELDRIS_IMG,
+            HARRY_IMG,
             caption="<b>Yes, I'm alive!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
@@ -267,11 +267,11 @@ def start(update: Update, context: CallbackContext):
                     [
                         InlineKeyboardButton(
                             text="☎️ Support",
-                            url="https://t.me/IDNCoderX",
+                            url="https://t.me/tech_sav_bot",
                         ),
                         InlineKeyboardButton(
                             text="Updates 📡",
-                            url="https://t.me/IDNCoder",
+                            url="https://t.me/tech_sav_bots",
                         ),
                     ]
                 ]
@@ -698,6 +698,6 @@ def main():
 
 
 if __name__ == "__main__":
-    LOGGER.info(f"[Zeldris] Successfully loaded modules: {str(ALL_MODULES)}")
+    LOGGER.info(f"[Harry] Successfully loaded modules: {str(ALL_MODULES)}")
     client.start(bot_token=TOKEN)
     main()
