@@ -29,9 +29,9 @@ from spamwatch import __version__ as __sw__
 from telegram import ParseMode, Update
 from telegram.ext import CommandHandler, Filters, CallbackContext
 
-from zeldris import dispatcher, OWNER_ID
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.filters import CustomFilters
+from Harry import dispatcher, OWNER_ID
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.filters import CustomFilters
 
 
 @typing_action
