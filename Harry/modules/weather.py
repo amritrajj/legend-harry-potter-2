@@ -25,9 +25,9 @@ from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext
 
-from zeldris import dispatcher, API_WEATHER as APPID
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action
+from Harry import dispatcher, API_WEATHER as APPID
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action
 
 
 @typing_action
