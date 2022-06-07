@@ -40,26 +40,26 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html, mention_markdown
 
-import zeldris.modules.sql.welcome_sql as sql
-from zeldris import (
+import Harry.modules.sql.welcome_sql as sql
+from Harry import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
     spamwtc,
     dispatcher,
 )
-from zeldris.modules.helper_funcs.chat_status import (
+from Harry.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
 )
-from zeldris.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from zeldris.modules.helper_funcs.msg_types import get_welcome_type
-from zeldris.modules.helper_funcs.string_handling import (
+from Harry.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from Harry.modules.helper_funcs.msg_types import get_welcome_type
+from Harry.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-from zeldris.modules.log_channel import loggable
-from zeldris.modules.no_sql.gban_db import is_user_gbanned
+from Harry.modules.log_channel import loggable
+from Harry.modules.no_sql.gban_db import is_user_gbanned
 
 VALID_WELCOME_FORMATTERS = [
     "first",
@@ -245,10 +245,10 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="☎️ Support", url="https://t.me/IDNCoderX"
+                                    text="☎️ Support", url="https://t.me/tech_sav_bot"
                                 ),
                                 InlineKeyboardButton(
-                                    text="Updates 📡", url="https://t.me/IDNCoder"
+                                    text="Updates 📡", url="https://t.me/tech_sav_bots"
                                 ),
                             ]
                         ],
