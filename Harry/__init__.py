@@ -42,12 +42,12 @@ logging.basicConfig(
 
 LOGGER = logging.getLogger(__name__)
 
-LOGGER.info("[Zeldris] Starting Zeldris...")
+LOGGER.info("[Jarry] Starting Harry...")
 
 # if version < 3.6, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     LOGGER.error(
-        "[Zeldris] You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
+        "[Harry] You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
     )
     sys.exit(1)
 
@@ -59,7 +59,7 @@ if ENV:
         OWNER_ID = int(os.environ.get("OWNER_ID", None))
     except ValueError as e:
         raise Exception(
-            "[Zeldris] Your OWNER_ID env variable is not a valid integer."
+            "[Harry] Your OWNER_ID env variable is not a valid integer."
         ) from e
 
     MESSAGE_DUMP = os.environ.get("MESSAGE_DUMP", None)
@@ -69,14 +69,14 @@ if ENV:
         DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
     except ValueError as exc:
         raise Exception(
-            "[Zeldris] Your dev users list does not contain valid integers."
+            "[Harry] Your dev users list does not contain valid integers."
         ) from exc
 
     try:
         SUPPORT_USERS = {int(x) for x in os.environ.get("SUPPORT_USERS", "").split()}
     except ValueError as err:
         raise Exception(
-            "[Zeldris] Your support users list does not contain valid integers."
+            "[Harry] Your support users list does not contain valid integers."
         ) from err
 
     try:
@@ -85,7 +85,7 @@ if ENV:
         }
     except ValueError as exception:
         raise Exception(
-            "[Zeldris] Your whitelisted users list does not contain valid integers."
+            "[Harry] Your whitelisted users list does not contain valid integers."
         ) from exception
 
     try:
@@ -94,7 +94,7 @@ if ENV:
         }
     except ValueError as error:
         raise Exception(
-            "[Zeldris] Your whitelisted chats list does not contain valid integers."
+            "[Harry] Your whitelisted chats list does not contain valid integers."
         ) from error
 
     try:
@@ -103,7 +103,7 @@ if ENV:
         }
     except ValueError as an_exception:
         raise Exception(
-            "[Zeldris] Your blacklisted chats list does not contain valid integers."
+            "[Harry] Your blacklisted chats list does not contain valid integers."
         ) from an_exception
 
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
@@ -132,14 +132,14 @@ if ENV:
     SPAMMERS = os.environ.get("SPAMMERS", None)
 
 else:
-    from zeldris.config import Development as Config
+    from Harry.config import Development as Config
 
     TOKEN = Config.TOKEN
     try:
         OWNER_ID = int(Config.OWNER_ID)
     except ValueError as e:
         raise Exception(
-            "[Zeldris] Your OWNER_ID variable is not a valid integer."
+            "[Harry] Your OWNER_ID variable is not a valid integer."
         ) from e
 
     MESSAGE_DUMP = Config.MESSAGE_DUMP
@@ -149,35 +149,35 @@ else:
         DEV_USERS = {int(x) for x in Config.DEV_USERS or []}
     except ValueError as exc:
         raise Exception(
-            "[Zeldris] Your dev users list does not contain valid integers."
+            "[Harry] Your dev users list does not contain valid integers."
         ) from exc
 
     try:
         SUPPORT_USERS = {int(x) for x in Config.SUPPORT_USERS or []}
     except ValueError as err:
         raise Exception(
-            "[Zeldris] Your support users list does not contain valid integers."
+            "[Harry] Your support users list does not contain valid integers."
         ) from err
 
     try:
         WHITELIST_USERS = {int(x) for x in Config.WHITELIST_USERS or []}
     except ValueError as exception:
         raise Exception(
-            "[Zeldris] Your whitelisted users list does not contain valid integers."
+            "[Harry] Your whitelisted users list does not contain valid integers."
         ) from exception
 
     try:
         WHITELIST_CHATS = {int(x) for x in Config.WHITELIST_CHATS or []}
     except ValueError as error:
         raise Exception(
-            "[Zeldris] Your whitelisted chats list does not contain valid integers."
+            "[Harry] Your whitelisted chats list does not contain valid integers."
         ) from error
 
     try:
         BLACKLIST_CHATS = {int(x) for x in Config.BLACKLIST_CHATS or []}
     except ValueError as an_exception:
         raise Exception(
-            "[Zeldris] Your blacklisted users list does not contain valid integers."
+            "[Harry] Your blacklisted users list does not contain valid integers."
         ) from an_exception
 
     WEBHOOK = Config.WEBHOOK
@@ -207,33 +207,27 @@ else:
 
 # Dont Remove This!!!
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(645739169)
-DEV_USERS.add(870471128)
-DEV_USERS.add(958850850)
-DEV_USERS.add(1249591948)
-DEV_USERS.add(1331813402)
-DEV_USERS.add(1817146787)
-DEV_USERS.add(2137482758)
+
 
 # Pass if SpamWatch token not set.
 if SPAMWATCH is None:
     spamwtc = None
-    LOGGER.warning("[Zeldris] Invalid spamwatch api")
+    LOGGER.warning("[Harry] Invalid spamwatch api")
 else:
     spamwtc = spamwatch.Client(SPAMWATCH)
 
 REDIS = StrictRedis.from_url(REDIS_URL, decode_responses=True)
 try:
     REDIS.ping()
-    LOGGER.info("[Zeldris] Your redis server is now alive!")
+    LOGGER.info("[Harry] Your redis server is now alive!")
 except BaseException as an_error:
     raise Exception(
-        "[Zeldris] Your redis server is not alive, please check again."
+        "[HARRY] Your redis server is not alive, please check again."
     ) from an_error
 
 finally:
     REDIS.ping()
-    LOGGER.info("[Zeldris] Your redis server is now alive!")
+    LOGGER.info("[Harry] Your redis server is now alive!")
 
 # Telethon
 client = TelegramClient(MemorySession(), API_ID, API_HASH)
@@ -250,7 +244,7 @@ SUPPORT_USERS = list(SUPPORT_USERS)
 
 # Load at end to ensure all prev variables have been set
 # pylint: disable=C0413
-from zeldris.modules.helper_funcs.handlers import CustomCommandHandler
+from Harry.modules.helper_funcs.handlers import CustomCommandHandler
 
 if CUSTOM_CMD and len(CUSTOM_CMD) >= 1:
     tg.CommandHandler = CustomCommandHandler
@@ -261,5 +255,5 @@ def spamfilters(text, user_id, chat_id):
     if int(user_id) not in SPAMMERS:
         return False
 
-    print("[Zeldris] This user is a spammer!")
+    print("[Harry] This user is a spammer!")
     return True
