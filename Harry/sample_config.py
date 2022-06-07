@@ -50,7 +50,7 @@ class Config(object):
     URL = None
     MONGO_URI = ""
     MONGO_PORT = 27017  # leave it as it is
-    MONGO_DB = "Zeldris"
+    MONGO_DB = "Harry"
 
     # OPTIONAL
     DEV_USERS = (
