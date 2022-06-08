@@ -23,19 +23,19 @@ from telegram import MessageEntity, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, Filters, MessageHandler
 
-from zeldris import dispatcher, REDIS
-from zeldris.modules.disable import (
+from Harry import dispatcher, REDIS
+from Harry.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from zeldris.modules.helper_funcs.readable_time import get_readable_time
-from zeldris.modules.redis.afk_redis import (
+from Harry.modules.helper_funcs.readable_time import get_readable_time
+from Harry.modules.redis.afk_redis import (
     start_afk,
     end_afk,
     is_user_afk,
     afk_reason,
 )
-from zeldris.modules.users import get_user_id
+from Harry.modules.users import get_user_id
 
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
