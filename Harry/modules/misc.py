@@ -44,7 +44,7 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, CallbackContext
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from zeldris import (
+from Harry import (
     dispatcher,
     OWNER_ID,
     DEV_USERS,
@@ -53,11 +53,11 @@ from zeldris import (
     WALL_API,
     spamwtc,
 )
-from zeldris.__main__ import STATS, USER_INFO, GDPR
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action, send_action
-from zeldris.modules.helper_funcs.extraction import extract_user
-from zeldris.modules.helper_funcs.filters import CustomFilters
+from Harry.__main__ import STATS, USER_INFO, GDPR
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action, send_action
+from Harry.modules.helper_funcs.extraction import extract_user
+from Harry.modules.helper_funcs.filters import CustomFilters
 
 
 @typing_action
