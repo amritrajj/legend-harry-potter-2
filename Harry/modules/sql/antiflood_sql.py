@@ -21,7 +21,7 @@ import threading
 from sqlalchemy import String, Column, Integer, UnicodeText
 from sqlalchemy.sql.sqltypes import BigInteger
 
-from zeldris.modules.sql import SESSION, BASE
+from Harry.modules.sql import SESSION, BASE
 
 DEF_COUNT = 0
 DEF_LIMIT = 0
