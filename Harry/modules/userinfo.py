@@ -24,11 +24,11 @@ from telegram import ParseMode, MAX_MESSAGE_LENGTH
 from telegram.ext import CallbackContext
 from telegram.utils.helpers import escape_markdown
 
-import zeldris.modules.sql.userinfo_sql as sql
-from zeldris import dispatcher, DEV_USERS
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.extraction import extract_user
+import Harry.modules.sql.userinfo_sql as sql
+from Harry import dispatcher, DEV_USERS
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.extraction import extract_user
 
 
 @typing_action
