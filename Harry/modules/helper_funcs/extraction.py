@@ -21,8 +21,8 @@ from typing import List, Optional, Tuple
 from telegram import Message, MessageEntity
 from telegram.error import BadRequest
 
-from zeldris import LOGGER
-from zeldris.modules.users import get_user_id
+from Harry import LOGGER
+from Harry.modules.users import get_user_id
 
 
 def id_from_reply(message):
