@@ -24,13 +24,13 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
 from telegram.utils.helpers import mention_html
 
-from zeldris import dispatcher
-from zeldris.modules.connection import connected
-from zeldris.modules.helper_funcs.alternate import send_message, typing_action
-from zeldris.modules.helper_funcs.chat_status import is_user_admin, user_admin
-from zeldris.modules.helper_funcs.string_handling import extract_time
-from zeldris.modules.log_channel import loggable
-from zeldris.modules.sql import antiflood_sql as sql
+from Harry import dispatcher
+from Harry.modules.connection import connected
+from Harry.modules.helper_funcs.alternate import send_message, typing_action
+from Harry.modules.helper_funcs.chat_status import is_user_admin, user_admin
+from Harry.modules.helper_funcs.string_handling import extract_time
+from Harry.modules.log_channel import loggable
+from Harry.modules.sql import antiflood_sql as sql
 
 FLOOD_GROUP = 3
 
