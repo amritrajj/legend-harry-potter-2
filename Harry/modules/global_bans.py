@@ -25,8 +25,8 @@ from telegram.error import BadRequest, TelegramError
 from telegram.ext import CommandHandler, MessageHandler, Filters, CallbackContext
 from telegram.utils.helpers import mention_html
 
-import zeldris.modules.no_sql.gban_db as db
-from zeldris import (
+import Harry.modules.no_sql.gban_db as db
+from Harry import (
     dispatcher,
     OWNER_ID,
     DEV_USERS,
@@ -35,11 +35,11 @@ from zeldris import (
     MESSAGE_DUMP,
     spamwtc,
 )
-from zeldris.modules.helper_funcs.alternate import typing_action, send_action
-from zeldris.modules.helper_funcs.chat_status import user_admin, is_user_admin
-from zeldris.modules.helper_funcs.extraction import extract_user, extract_user_and_text
-from zeldris.modules.helper_funcs.filters import CustomFilters
-from zeldris.modules.no_sql.users_db import get_user_com_chats
+from Harry.modules.helper_funcs.alternate import typing_action, send_action
+from Harry.modules.helper_funcs.chat_status import user_admin, is_user_admin
+from Harry.modules.helper_funcs.extraction import extract_user, extract_user_and_text
+from Harry.modules.helper_funcs.filters import CustomFilters
+from Harry.modules.no_sql.users_db import get_user_com_chats
 
 GBAN_ENFORCE_GROUP = 6
 
