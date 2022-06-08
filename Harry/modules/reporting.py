@@ -31,11 +31,11 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-from zeldris import dispatcher, LOGGER
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import user_not_admin, user_admin
-from zeldris.modules.log_channel import loggable
-from zeldris.modules.sql import reporting_sql as sql
+from Harry import dispatcher, LOGGER
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import user_not_admin, user_admin
+from Harry.modules.log_channel import loggable
+from Harry.modules.sql import reporting_sql as sql
 
 REPORT_GROUP = 5
 
