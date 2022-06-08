@@ -1,108 +1,87 @@
-# This file is part of Daisy (Telegram Bot)
-
+# ZeldrisRobot
+# Copyright (C) 2017-2019, Paul Larsen
+# Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
+#
 # This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU Affero General Public License for more details.
-
+#
 # You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-import os
-import sys
-
-import yaml
-from envparse import env
-
-from Harry.utils.logger import log
-
-DEFAULTS = {
-    "LOAD_MODULES": True,
-    "DEBUG_MODE": True,
-    "REDIS_HOST": "localhost",
-    "REDIS_PORT": 6379,
-    "REDIS_DB_FSM": 1,
-    "MONGODB_URI": "localhost",
-    "MONGO_DB": "DaisyX",
-    "API_PORT": 8080,
-    "JOIN_CONFIRM_DURATION": "30m",
-}
-
-CONFIG_PATH = "data/bot_conf.yaml"
-if os.name == "nt":
-    log.debug("Detected Windows, changing config path...")
-    CONFIG_PATH = os.getcwd() + "\\data\\bot_conf.yaml"
-
-if os.path.isfile(CONFIG_PATH):
-    log.info(CONFIG_PATH)
-    for item in (
-        data := yaml.load(open("data/bot_conf.yaml", "r"), Loader=yaml.CLoader)
-    ):
-        DEFAULTS[item.upper()] = data[item]
-else:
-    log.info("Using env vars")
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
-def get_str_key(name, required=False):
-    if name in DEFAULTS:
-        default = DEFAULTS[name]
-    else:
-        default = None
-    if not (data := env.str(name, default=default)) and not required:
-        log.warn("No str key: " + name)
-        return None
-    elif not data:
-        log.critical("No str key: " + name)
-        sys.exit(2)
-    else:
-        return data
+if not __name__.endswith("sample_config"):
+    import sys
+
+    print(
+        "The README is there to be read. Extend this sample config to a config file, don't just rename and change "
+        "values here. Doing that WILL backfire on you.\nBot quitting.",
+        file=sys.stderr,
+    )
+    sys.exit(1)
 
 
-def get_int_key(name, required=False):
-    if name in DEFAULTS:
-        default = DEFAULTS[name]
-    else:
-        default = None
-    if not (data := env.int(name, default=default)) and not required:
-        log.warn("No int key: " + name)
-        return None
-    elif not data:
-        log.critical("No int key: " + name)
-        sys.exit(2)
-    else:
-        return data
+# Create a new config.py file in same dir and import, then extend this class.
+class Config(object):
+    LOGGER = True
+
+    # REQUIRED
+    TOKEN = ""  # Take from @BotFather
+    OWNER_ID = (
+        ""  # If you dont know, run the bot and do /id in your private chat with it
+    )
+    OWNER_USERNAME = ""
+    API_HASH = None  # for purge stuffs
+    API_ID = None
+
+    # RECOMMENDED
+    SQLALCHEMY_DATABASE_URI = "sqldbtype://username:pw@hostname:port/db_name"  # needed for any database modules
+    MESSAGE_DUMP = None  # needed to make sure 'save from' messages persist
+    REDIS_URL = "redis://something@nothing/anything:10002"  # needed for afk module, get from redislab
+    LOAD = []
+    NO_LOAD = []
+    WEBHOOK = False
+    URL = None
+    MONGO_URI = ""
+    MONGO_PORT = 27017  # leave it as it is
+    MONGO_DB = "Harry"
+
+    # OPTIONAL
+    DEV_USERS = (
+        []
+    )  # List of id's (not usernames) for users which have sudo access to the bot.
+    SUPPORT_USERS = (
+        []
+    )  # List of id's (not usernames) for users which are allowed to gban, but can also be banned.
+    WHITELIST_USERS = (
+        []
+    )  # List of id's (not usernames) for users which WONT be banned/kicked by the bot.
+    WHITELIST_CHATS = []
+    BLACKLIST_CHATS = []
+    DONATION_LINK = None  # EG, paypal
+    CERT_PATH = None
+    PORT = 5000
+    DEL_CMDS = False  # Whether or not you should delete "blue text must click" commands
+    STRICT_GBAN = True
+    WORKERS = 8  # Number of subthreads to use. This is the recommended amount - see for yourself what works best!
+    BAN_STICKER = None  # banhammer marie sticker
+    ALLOW_EXCL = False  # DEPRECATED, USE BELOW INSTEAD! Allow ! commands as well as /
+    CUSTOM_CMD = False  # Set to ('/', '!') or whatever to enable it, like ALLOW_EXCL but with more custom handler!
+    API_OPENWEATHER = None  # OpenWeather API
+    SPAMWATCH_API = None  # Your SpamWatch token
+    WALL_API = None
+    SPAMMERS = None
 
 
-def get_list_key(name, required=False):
-    if name in DEFAULTS:
-        default = DEFAULTS[name]
-    else:
-        default = None
-    if not (data := env.list(name, default=default)) and not required:
-        log.warn("No list key: " + name)
-        return []
-    elif not data:
-        log.critical("No list key: " + name)
-        sys.exit(2)
-    else:
-        return data
+class Production(Config):
+    LOGGER = False
 
 
-def get_bool_key(name, required=False):
-    if name in DEFAULTS:
-        default = DEFAULTS[name]
-    else:
-        default = None
-    if not (data := env.bool(name, default=default)) and not required:
-        log.warn("No bool key: " + name)
-        return False
-    elif not data:
-        log.critical("No bool key: " + name)
-        sys.exit(2)
-    else:
-        return data
+class Development(Config):
+    LOGGER = True
