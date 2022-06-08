@@ -21,7 +21,7 @@ import threading
 
 from sqlalchemy import Column, String, Boolean
 
-from zeldris.modules.sql import SESSION, BASE
+from Harry.modules.sql import SESSION, BASE
 
 
 class Permissions(BASE):
