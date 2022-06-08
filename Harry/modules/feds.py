@@ -40,8 +40,8 @@ from telegram.error import BadRequest, TelegramError, Unauthorized
 from telegram.ext import CommandHandler, CallbackQueryHandler, CallbackContext
 from telegram.utils.helpers import mention_html, mention_markdown
 
-import zeldris.modules.sql.feds_sql as sql
-from zeldris import (
+import Harry.modules.sql.feds_sql as sql
+from Harry import (
     dispatcher,
     OWNER_ID,
     DEV_USERS,
@@ -49,19 +49,19 @@ from zeldris import (
     MESSAGE_DUMP,
     LOGGER,
 )
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import (
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import (
     send_message,
     typing_action,
     send_action,
 )
-from zeldris.modules.helper_funcs.chat_status import is_user_admin
-from zeldris.modules.helper_funcs.extraction import (
+from Harry.modules.helper_funcs.chat_status import is_user_admin
+from Harry.modules.helper_funcs.extraction import (
     extract_user,
     extract_unt_fedban,
     extract_user_fban,
 )
-from zeldris.modules.helper_funcs.string_handling import markdown_parser
+from Harry.modules.helper_funcs.string_handling import markdown_parser
 
 # Hello bot owner, I spended for feds many hours of my life, Please don't remove this if you still respect MrYacha
 # and peaktogoo and AyraHikari too Federation by MrYacha 2018-2019 Federation rework by Mizukito Akito 2019
