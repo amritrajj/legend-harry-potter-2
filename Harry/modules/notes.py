@@ -40,15 +40,15 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import zeldris.modules.sql.notes_sql as sql
-from zeldris import dispatcher, MESSAGE_DUMP, LOGGER
-from zeldris.modules.connection import connected
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
-from zeldris.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from zeldris.modules.helper_funcs.msg_types import get_note_type
-from zeldris.modules.helper_funcs.string_handling import (
+import Harry.modules.sql.notes_sql as sql
+from Harry import dispatcher, MESSAGE_DUMP, LOGGER
+from Harry.modules.connection import connected
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
+from Harry.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from Harry.modules.helper_funcs.msg_types import get_note_type
+from Harry.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_to_html,
 )
