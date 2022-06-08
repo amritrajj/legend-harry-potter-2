@@ -22,7 +22,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from zeldris import client, DEV_USERS
+from Harry import client, DEV_USERS
 
 
 # Check if user has admin rights
