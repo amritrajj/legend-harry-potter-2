@@ -30,18 +30,18 @@ from telegram.ext import CommandHandler
 from telegram.ext import Filters
 from telegram.utils.helpers import mention_html
 
-from zeldris import dispatcher, LOGGER
-from zeldris.modules.helper_funcs.admin_rights import user_can_ban
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import (
+from Harry import dispatcher, LOGGER
+from Harry.modules.helper_funcs.admin_rights import user_can_ban
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import (
     bot_admin,
     user_admin,
     is_user_admin,
     can_restrict,
 )
-from zeldris.modules.helper_funcs.extraction import extract_user, extract_user_and_text
-from zeldris.modules.helper_funcs.string_handling import extract_time
-from zeldris.modules.log_channel import loggable
+from Harry.modules.helper_funcs.extraction import extract_user, extract_user_and_text
+from Harry.modules.helper_funcs.string_handling import extract_time
+from Harry.modules.log_channel import loggable
 
 
 @bot_admin
