@@ -20,7 +20,7 @@ from enum import IntEnum, unique
 
 from telegram import Message
 
-from zeldris.modules.helper_funcs.string_handling import (
+from Harry.modules.helper_funcs.string_handling import (
     button_markdown_parser,
 )
 
