@@ -27,7 +27,7 @@ import requests
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext, CommandHandler
 
-from zeldris import dispatcher, DEV_USERS, MESSAGE_DUMP
+from Harry import dispatcher, DEV_USERS, MESSAGE_DUMP
 
 pretty_errors.mono()
 
