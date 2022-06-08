@@ -28,9 +28,9 @@ from telegram import TelegramError
 from telegram.ext import CallbackContext
 from telegram.utils.helpers import mention_html
 
-from zeldris import dispatcher
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action
+from Harry import dispatcher
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
