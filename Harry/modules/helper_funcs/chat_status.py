@@ -25,7 +25,7 @@ from telegram import Chat, ChatMember, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CallbackContext
 
-from zeldris import (
+from Harry import (
     DEL_CMDS,
     DEV_USERS,
     WHITELIST_USERS,
