@@ -17,8 +17,8 @@
 
 """Users Database."""
 
-from zeldris import dispatcher
-from zeldris.modules.no_sql import get_collection
+from Harry import dispatcher
+from Harry.modules.no_sql import get_collection
 
 USERS_DB = get_collection("USERS")
 CHATS_DB = get_collection("CHATS")
