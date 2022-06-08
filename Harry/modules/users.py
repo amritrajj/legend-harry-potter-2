@@ -23,9 +23,9 @@ from telegram import TelegramError, Update
 from telegram.error import BadRequest
 from telegram.ext import MessageHandler, Filters, CommandHandler, CallbackContext
 
-import zeldris.modules.no_sql.users_db as users_db
-from zeldris import dispatcher, OWNER_ID, LOGGER
-from zeldris.modules.helper_funcs.filters import CustomFilters
+import Harry.modules.no_sql.users_db as users_db
+from Harry import dispatcher, OWNER_ID, LOGGER
+from Harry.modules.helper_funcs.filters import CustomFilters
 
 USERS_GROUP = 4
 CHAT_GROUP = 10
