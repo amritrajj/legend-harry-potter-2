@@ -18,7 +18,7 @@
 
 import sys
 
-from zeldris import LOAD, NO_LOAD, LOGGER
+from Harry import LOAD, NO_LOAD, LOGGER
 
 
 def __list_all_modules():
@@ -56,5 +56,5 @@ def __list_all_modules():
 
 
 ALL_MODULES = sorted(__list_all_modules())
-LOGGER.info("[Zeldris] Modules to load: %s", str(ALL_MODULES))
+LOGGER.info("[Harry] Modules to load: %s", str(ALL_MODULES))
 __all__ = ALL_MODULES + ["ALL_MODULES"]
