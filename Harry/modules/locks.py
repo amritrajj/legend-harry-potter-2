@@ -26,19 +26,19 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
-import zeldris.modules.sql.locks_sql as sql
-from zeldris import dispatcher, LOGGER
-from zeldris.modules.connection import connected
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import send_message, typing_action
-from zeldris.modules.helper_funcs.chat_status import (
+import Harry.modules.sql.locks_sql as sql
+from Harry import dispatcher, LOGGER
+from Harry.modules.connection import connected
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import send_message, typing_action
+from Harry.modules.helper_funcs.chat_status import (
     can_delete,
     is_user_admin,
     user_not_admin,
     is_bot_admin,
     user_admin,
 )
-from zeldris.modules.log_channel import loggable
+from Harry.modules.log_channel import loggable
 
 ad = AlphabetDetector()
 
