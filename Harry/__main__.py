@@ -676,7 +676,7 @@ def main():
     dispatcher.add_error_handler(error_handler)
 
     if WEBHOOK:
-        LOGGER.info("[Zeldris] Using webhooks.")
+        LOGGER.info("[Harry] Using webhooks.")
         updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
 
         if CERT_PATH:
@@ -686,7 +686,7 @@ def main():
             client.run_until_disconnected()
 
     else:
-        LOGGER.info("[Zeldris] Using long polling.")
+        LOGGER.info("[Harry] Using long polling.")
         updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
         if MESSAGE_DUMP:
             updater.bot.send_message(chat_id=MESSAGE_DUMP, text="I'm a Demon King...")
