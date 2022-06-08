@@ -25,24 +25,24 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters
 from telegram.utils.helpers import mention_html
 
-from zeldris import dispatcher
-from zeldris.modules.connection import connected
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.admin_rights import (
+from Harry import dispatcher
+from Harry.modules.connection import connected
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.admin_rights import (
     user_can_pin,
     user_can_promote,
     user_can_changeinfo,
 )
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import (
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import (
     bot_admin,
     can_promote,
     user_admin,
     ADMIN_CACHE,
     can_pin,
 )
-from zeldris.modules.helper_funcs.extraction import extract_user, extract_user_and_text
-from zeldris.modules.log_channel import loggable
+from Harry.modules.helper_funcs.extraction import extract_user, extract_user_and_text
+from Harry.modules.log_channel import loggable
 
 
 @bot_admin
