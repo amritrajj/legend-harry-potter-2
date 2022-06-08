@@ -20,7 +20,7 @@ import threading
 
 from sqlalchemy import Column, String, UnicodeText, func, distinct
 
-from zeldris.modules.sql import SESSION, BASE
+from Harry.modules.sql import SESSION, BASE
 
 
 class Disable(BASE):
