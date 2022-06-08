@@ -24,11 +24,11 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, CallbackContext
 from telegram.utils.helpers import mention_html
 
-from zeldris import dispatcher, LOGGER
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.admin_rights import user_can_ban
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import (
+from Harry import dispatcher, LOGGER
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.admin_rights import user_can_ban
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import (
     bot_admin,
     user_admin,
     is_user_ban_protected,
@@ -37,9 +37,9 @@ from zeldris.modules.helper_funcs.chat_status import (
     is_user_in_chat,
     can_delete,
 )
-from zeldris.modules.helper_funcs.extraction import extract_user_and_text
-from zeldris.modules.helper_funcs.string_handling import extract_time
-from zeldris.modules.log_channel import loggable
+from Harry.modules.helper_funcs.extraction import extract_user_and_text
+from Harry.modules.helper_funcs.string_handling import extract_time
+from Harry.modules.log_channel import loggable
 
 
 @bot_admin
