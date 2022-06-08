@@ -22,7 +22,7 @@ from sqlalchemy import Integer, Column, String, UnicodeText, func, distinct, Boo
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.sql.sqltypes import BigInteger
 
-from zeldris.modules.sql import SESSION, BASE
+from Harry.modules.sql import SESSION, BASE
 
 
 class Warns(BASE):
