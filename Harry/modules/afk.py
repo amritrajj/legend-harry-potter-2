@@ -1,7 +1,7 @@
 import random, html
 
-from GroupMenter import dispatcher
-from GroupMenter.modules.disable import (
+from Harry import dispatcher
+from Harry.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
