@@ -22,7 +22,7 @@ from typing import Union
 from sqlalchemy import Column, String, Boolean
 from sqlalchemy.sql.sqltypes import BigInteger
 
-from zeldris.modules.sql import SESSION, BASE
+from Harry.modules.sql import SESSION, BASE
 
 
 class ReportingUserSettings(BASE):
