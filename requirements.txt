@@ -35,3 +35,4 @@ ujson==5.2.0
 wget
 wikipedia==1.4.0
 aiogram == 2.13
+PyYAML>5.0
