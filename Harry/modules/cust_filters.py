@@ -31,22 +31,22 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from zeldris import LOGGER, dispatcher
-from zeldris.modules.connection import connected
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import send_message, typing_action
-from zeldris.modules.helper_funcs.chat_status import user_admin
-from zeldris.modules.helper_funcs.extraction import extract_text
-from zeldris.modules.helper_funcs.filters import CustomFilters
-from zeldris.modules.helper_funcs.misc import build_keyboard_parser
-from zeldris.modules.helper_funcs.msg_types import get_filter_type
-from zeldris.modules.helper_funcs.string_handling import (
+from Harry import LOGGER, dispatcher
+from Harry.modules.connection import connected
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import send_message, typing_action
+from Harry.modules.helper_funcs.chat_status import user_admin
+from Harry.modules.helper_funcs.extraction import extract_text
+from Harry.modules.helper_funcs.filters import CustomFilters
+from Harry.modules.helper_funcs.misc import build_keyboard_parser
+from Harry.modules.helper_funcs.msg_types import get_filter_type
+from Harry.modules.helper_funcs.string_handling import (
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
     split_quotes,
 )
-from zeldris.modules.sql import cust_filters_sql as sql
+from Harry.modules.sql import cust_filters_sql as sql
 
 HANDLER_GROUP = 15
 
