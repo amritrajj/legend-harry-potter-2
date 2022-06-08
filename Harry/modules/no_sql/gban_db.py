@@ -17,7 +17,7 @@
 
 """Global Bans Database"""
 
-from zeldris.modules.no_sql import get_collection
+from Harry.modules.no_sql import get_collection
 
 GBAN_USER = get_collection("GBANS")
 GBAN_SETTINGS = get_collection("GBAN_SETTINGS")
