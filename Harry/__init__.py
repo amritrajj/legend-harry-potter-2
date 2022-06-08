@@ -193,7 +193,7 @@ else:
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("harry", API_ID, API_HASH)
+telethn = TelegramClient("legend_harry_bot", API_ID, API_HASH)
 pbot = Client("legend_harry_bot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
