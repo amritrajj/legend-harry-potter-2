@@ -31,9 +31,9 @@ from telegram import (
 )
 from telegram.ext import CallbackContext
 
-from zeldris import dispatcher
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action, send_action
+from Harry import dispatcher
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action, send_action
 
 trans = SyncTranslator()
 
