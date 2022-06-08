@@ -26,15 +26,15 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, CallbackContext
 from telegram.utils.helpers import escape_markdown
 
-import zeldris.modules.helper_funcs.fun_strings as fun
-from zeldris import LOGGER, DEV_USERS, SUPPORT_USERS, dispatcher
-from zeldris.modules.disable import (
+import Harry.modules.helper_funcs.fun_strings as fun
+from Harry import LOGGER, DEV_USERS, SUPPORT_USERS, dispatcher
+from Harry.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.extraction import extract_user
-from zeldris.modules.helper_funcs.filters import CustomFilters
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.extraction import extract_user
+from Harry.modules.helper_funcs.filters import CustomFilters
 
 
 @typing_action
@@ -455,11 +455,11 @@ Some dank memes for fun or whatever!
 × /police: Give Police siren Animation.
 
 *Regex based memes:*
-`/decide` (disabled rn) can be also used with regex like: `zeldris What? <question>: randomly answer "Yes, No" etc.`
+`/decide` (disabled rn) can be also used with regex like: `Harry What? <question>: randomly answer "Yes, No" etc.`
 Some other regex filters are:
 `me too` | `good morning` | `good night`.
 
-Zeldris will reply random strings accordingly when these words are used!
+Harry will reply random strings accordingly when these words are used!
 All regex filters can be disabled incase u don't want... like: `/disable metoo`.
 """
 
