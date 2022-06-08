@@ -19,7 +19,7 @@ import threading
 
 from sqlalchemy import Boolean, Column, UnicodeText
 
-from zeldris.modules.sql import BASE, SESSION
+from Harry.modules.sql import BASE, SESSION
 
 
 class CleanerBlueTextChatSettings(BASE):
