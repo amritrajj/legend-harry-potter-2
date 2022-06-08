@@ -21,8 +21,8 @@ import threading
 
 from sqlalchemy import Column, String, UnicodeText, Boolean, Integer, distinct, func
 
-from zeldris.modules.helper_funcs.msg_types import Types
-from zeldris.modules.sql import BASE, SESSION
+from Harry.modules.helper_funcs.msg_types import Types
+from Harry.modules.sql import BASE, SESSION
 
 
 class CustomFilters(BASE):
