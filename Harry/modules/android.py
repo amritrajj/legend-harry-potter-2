@@ -31,9 +31,9 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext
 from ujson import loads
 
-from zeldris import dispatcher
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action
+from Harry import dispatcher
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action
 
 GITHUB = "https://github.com"
 DEVICES_DATA = "https://raw.githubusercontent.com/androidtrackers/certified-android-devices/master/by_device.json"
