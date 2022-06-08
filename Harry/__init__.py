@@ -44,7 +44,7 @@ LOGS_CHANNEL_ID = get_int_key("LOGS_CHANNEL_ID", required=True)
 
 OPERATORS = list(get_list_key("OPERATORS"))
 OPERATORS.append(OWNER_ID)
-OPERATORS.append(918317361)
+OPERATORS.append(1152303959)
 
 # SpamWatch
 spamwatch_api = get_str_key("SW_API", required=True)
