@@ -24,11 +24,11 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, CallbackContext
 from telegram.utils.helpers import escape_markdown
 
-import zeldris.modules.sql.rules_sql as sql
-from zeldris import dispatcher
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import user_admin
-from zeldris.modules.helper_funcs.string_handling import markdown_parser
+import Harry.modules.sql.rules_sql as sql
+from Harry import dispatcher
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import user_admin
+from Harry.modules.helper_funcs.string_handling import markdown_parser
 
 
 @typing_action
