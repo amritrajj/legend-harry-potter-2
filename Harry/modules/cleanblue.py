@@ -26,15 +26,15 @@ from telegram.ext import (
     MessageHandler,
 )
 
-from zeldris import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.chat_status import (
+from Harry import ALLOW_EXCL, CustomCommandHandler, dispatcher
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from zeldris.modules.sql import cleanblue_sql as sql
+from Harry.modules.sql import cleanblue_sql as sql
 
 CMD_STARTERS = ("/", "!") if ALLOW_EXCL else "/"
 BLUE_TEXT_CLEAN_GROUP = 13
