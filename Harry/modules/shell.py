@@ -23,8 +23,8 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler
 
-from zeldris import LOGGER, dispatcher
-from zeldris.modules.helper_funcs.chat_status import dev_plus
+from Harry import LOGGER, dispatcher
+from Harry.modules.helper_funcs.chat_status import dev_plus
 
 
 @dev_plus
