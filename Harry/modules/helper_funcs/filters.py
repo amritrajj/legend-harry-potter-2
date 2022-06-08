@@ -19,7 +19,7 @@
 from telegram import Message
 from telegram.ext import MessageFilter
 
-from zeldris import DEV_USERS, SUPPORT_USERS
+from Harry import DEV_USERS, SUPPORT_USERS
 
 
 class CustomFilters(object):
