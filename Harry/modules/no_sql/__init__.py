@@ -21,7 +21,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from odmantic import AIOEngine
 from pymongo import MongoClient, collection
 
-from zeldris import MONGO_DB, MONGO_PORT, MONGO_URI
+from Harry import MONGO_DB, MONGO_PORT, MONGO_URI
 
 # MongoDB Client
 mongodb = MongoClient(MONGO_URI, MONGO_PORT)[MONGO_DB]
