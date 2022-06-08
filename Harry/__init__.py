@@ -1,194 +1,156 @@
-# ZeldrisRobot
-# Copyright (C) 2017-2019, Paul Larsen
-# Copyright (C) 2022, IDNCoderX Team, <https://github.com/IDN-C-X/ZeldrisRobot>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-
-# sourcery skip: raise-specific-error
 import logging
 import os
 import sys
 import time
-
 import spamwatch
+
 import telegram.ext as tg
-from redis import StrictRedis
+from pyrogram import Client, errors
 from telethon import TelegramClient
-from telethon.sessions import MemorySession
 
 StartTime = time.time()
 
 # enable logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler("log.txt"),
-        logging.StreamHandler(),
-    ],
+    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
 )
 
 LOGGER = logging.getLogger(__name__)
 
-LOGGER.info("[Harry] Starting Harry...")
-
 # if version < 3.6, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     LOGGER.error(
-        "[Harry] You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
+        "You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting."
     )
-    sys.exit(1)
+    quit(1)
 
 ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
     TOKEN = os.environ.get("TOKEN", None)
+
     try:
         OWNER_ID = int(os.environ.get("OWNER_ID", None))
-    except ValueError as e:
-        raise Exception(
-            "[Harry] Your OWNER_ID env variable is not a valid integer."
-        ) from e
+    except ValueError:
+        raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
-    MESSAGE_DUMP = os.environ.get("MESSAGE_DUMP", None)
+    JOIN_LOGGER = os.environ.get("JOIN_LOGGER", None)
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
 
     try:
-        DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
-    except ValueError as exc:
-        raise Exception(
-            "[Harry] Your dev users list does not contain valid integers."
-        ) from exc
+        DRAGONS = set(int(x) for x in os.environ.get("DRAGONS", "").split())
+        DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
+    except ValueError:
+        raise Exception("Your sudo or dev users list does not contain valid integers.")
 
     try:
-        SUPPORT_USERS = {int(x) for x in os.environ.get("SUPPORT_USERS", "").split()}
-    except ValueError as err:
-        raise Exception(
-            "[Harry] Your support users list does not contain valid integers."
-        ) from err
+        DEMONS = set(int(x) for x in os.environ.get("DEMONS", "").split())
+    except ValueError:
+        raise Exception("Your support users list does not contain valid integers.")
 
     try:
-        WHITELIST_USERS = {
-            int(x) for x in os.environ.get("WHITELIST_USERS", "").split()
-        }
-    except ValueError as exception:
-        raise Exception(
-            "[Harry] Your whitelisted users list does not contain valid integers."
-        ) from exception
+        WOLVES = set(int(x) for x in os.environ.get("WOLVES", "").split())
+    except ValueError:
+        raise Exception("Your whitelisted users list does not contain valid integers.")
 
     try:
-        WHITELIST_CHATS = {
-            int(x) for x in os.environ.get("WHITELIST_CHATS", "").split()
-        }
-    except ValueError as error:
-        raise Exception(
-            "[harry] Your whitelisted chats list does not contain valid integers."
-        ) from error
+        TIGERS = set(int(x) for x in os.environ.get("TIGERS", "").split())
+    except ValueError:
+        raise Exception("Your tiger users list does not contain valid integers.")
 
-    try:
-        BLACKLIST_CHATS = {
-            int(x) for x in os.environ.get("BLACKLIST_CHATS", "").split()
-        }
-    except ValueError as an_exception:
-        raise Exception(
-            "[Harry] Your blacklisted chats list does not contain valid integers."
-        ) from an_exception
-
+    INFOPIC = bool(os.environ.get("INFOPIC", False))
+    EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
-    MONGO_URI = os.environ.get("MONGO_URI", None)
-    MONGO_DB = os.environ.get("MONGO_DB", "Zeldris")
-    MONGO_PORT = int(os.environ.get("MONGO_PORT", 27017))
-    DB_URL = os.environ.get("DATABASE_URL").replace("postgres://", "postgresql://")
-    REDIS_URL = os.environ.get("REDIS_URL")
+    API_ID = os.environ.get("API_ID", None)
+    API_HASH = os.environ.get("API_HASH", None)
+    DB_URI = os.environ.get("DATABASE_URL")
+    MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     DONATION_LINK = os.environ.get("DONATION_LINK")
+    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
+    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
+    OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", None)
+    VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
+    BOT_ID = int(os.environ.get("BOT_ID", None))
     LOAD = os.environ.get("LOAD", "").split()
-    NO_LOAD = os.environ.get("NO_LOAD", "").split()
+    NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
     STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
     WORKERS = int(os.environ.get("WORKERS", 8))
     BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
     ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
-    CUSTOM_CMD = os.environ.get("CUSTOM_CMD", False)
-    API_WEATHER = os.environ.get("API_OPENWEATHER", None)
+    CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
+    TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
+    AI_API_KEY = os.environ.get("AI_API_KEY", None)
     WALL_API = os.environ.get("WALL_API", None)
-    API_ID = int(os.environ.get("API_ID", None))
-    API_HASH = os.environ.get("API_HASH", None)
-    SPAMWATCH = os.environ.get("SPAMWATCH_API", None)
-    SPAMMERS = os.environ.get("SPAMMERS", None)
+    SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
+    SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
+    SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
+    IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
+    IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
+
+    ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
+
+    try:
+        BL_CHATS = set(int(x) for x in os.environ.get("BL_CHATS", "").split())
+    except ValueError:
+        raise Exception("Your blacklisted chats list does not contain valid integers.")
 
 else:
     from Harry.config import Development as Config
 
     TOKEN = Config.TOKEN
+
     try:
         OWNER_ID = int(Config.OWNER_ID)
-    except ValueError as e:
-        raise Exception(
-            "[Harry] Your OWNER_ID variable is not a valid integer."
-        ) from e
+    except ValueError:
+        raise Exception("Your OWNER_ID variable is not a valid integer.")
 
-    MESSAGE_DUMP = Config.MESSAGE_DUMP
+    JOIN_LOGGER = Config.JOIN_LOGGER
     OWNER_USERNAME = Config.OWNER_USERNAME
+    ALLOW_CHATS = Config.ALLOW_CHATS
+    try:
+        DRAGONS = set(int(x) for x in Config.DRAGONS or [])
+        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
+    except ValueError:
+        raise Exception("Your sudo or dev users list does not contain valid integers.")
 
     try:
-        DEV_USERS = {int(x) for x in Config.DEV_USERS or []}
-    except ValueError as exc:
-        raise Exception(
-            "[Harry] Your dev users list does not contain valid integers."
-        ) from exc
+        DEMONS = set(int(x) for x in Config.DEMONS or [])
+    except ValueError:
+        raise Exception("Your support users list does not contain valid integers.")
 
     try:
-        SUPPORT_USERS = {int(x) for x in Config.SUPPORT_USERS or []}
-    except ValueError as err:
-        raise Exception(
-            "[Harry] Your support users list does not contain valid integers."
-        ) from err
+        WOLVES = set(int(x) for x in Config.WOLVES or [])
+    except ValueError:
+        raise Exception("Your whitelisted users list does not contain valid integers.")
 
     try:
-        WHITELIST_USERS = {int(x) for x in Config.WHITELIST_USERS or []}
-    except ValueError as exception:
-        raise Exception(
-            "[Harry] Your whitelisted users list does not contain valid integers."
-        ) from exception
+        TIGERS = set(int(x) for x in Config.TIGERS or [])
+    except ValueError:
+        raise Exception("Your tiger users list does not contain valid integers.")
 
-    try:
-        WHITELIST_CHATS = {int(x) for x in Config.WHITELIST_CHATS or []}
-    except ValueError as error:
-        raise Exception(
-            "[Harry] Your whitelisted chats list does not contain valid integers."
-        ) from error
-
-    try:
-        BLACKLIST_CHATS = {int(x) for x in Config.BLACKLIST_CHATS or []}
-    except ValueError as an_exception:
-        raise Exception(
-            "[Zeldris] Your blacklisted users list does not contain valid integers."
-        ) from an_exception
-
+    EVENT_LOGS = Config.EVENT_LOGS
     WEBHOOK = Config.WEBHOOK
     URL = Config.URL
     PORT = Config.PORT
     CERT_PATH = Config.CERT_PATH
-    MONGO_PORT = Config.MONGO_PORT
-    MONGO_URI = Config.MONGO_URI
-    MONGO_DB = Config.MONGO_DB
-    DB_URL = Config.SQLALCHEMY_DATABASE_URI
-    REDIS_URL = Config.REDIS_URL
+    API_ID = Config.API_ID
+    API_HASH = Config.API_HASH
+
+    DB_URI = Config.SQLALCHEMY_DATABASE_URI
+    MONGO_DB_URI = Config.MONGO_DB_URI
+    HEROKU_API_KEY = Config.HEROKU_API_KEY
+    HEROKU_APP_NAME = Config.HEROKU_APP_NAME
+    TEMP_DOWNLOAD_DIRECTORY = Config.TEMP_DOWNLOAD_DIRECTORY
+    OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
+    VIRUS_API_KEY = Config.VIRUS_API_KEY
+    BOT_ID = Config.BOT_ID
     DONATION_LINK = Config.DONATION_LINK
     LOAD = Config.LOAD
     NO_LOAD = Config.NO_LOAD
@@ -197,63 +159,58 @@ else:
     WORKERS = Config.WORKERS
     BAN_STICKER = Config.BAN_STICKER
     ALLOW_EXCL = Config.ALLOW_EXCL
-    CUSTOM_CMD = Config.CUSTOM_CMD
-    API_WEATHER = Config.API_OPENWEATHER
+    CASH_API_KEY = Config.CASH_API_KEY
+    TIME_API_KEY = Config.TIME_API_KEY
+    AI_API_KEY = Config.AI_API_KEY
     WALL_API = Config.WALL_API
-    API_HASH = Config.API_HASH
-    API_ID = Config.API_ID
-    SPAMWATCH = Config.SPAMWATCH_API
-    SPAMMERS = Config.SPAMMERS
+    SUPPORT_CHAT = Config.SUPPORT_CHAT
+    SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
+    SPAMWATCH_API = Config.SPAMWATCH_API
+    INFOPIC = Config.INFOPIC
+    REDIS_URL = Config.REDIS_URL
+    IBM_WATSON_CRED_URL = Config.IBM_WATSON_CRED_URL
+    IBM_WATSON_CRED_PASSWORD = Config.IBM_WATSON_CRED_PASSWORD
 
-# Count owner as dev users
+    
+    try:
+        BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
+    except ValueError:
+        raise Exception("Your blacklisted chats list does not contain valid integers.")
+
+DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
+DEV_USERS.add(1587091205)
 
-
-# Pass if SpamWatch token not set.
-if SPAMWATCH is None:
-    spamwtc = None
-    LOGGER.warning("[Harry] Invalid spamwatch api")
+if not SPAMWATCH_API:
+    sw = None
+    LOGGER.warning("SpamWatch API key missing! recheck your config.")
 else:
-    spamwtc = spamwatch.Client(SPAMWATCH)
+    try:
+        sw = spamwatch.Client(SPAMWATCH_API)
+    except:
+        sw = None
+        LOGGER.warning("Can't connect to SpamWatch!")
 
-REDIS = StrictRedis.from_url(REDIS_URL, decode_responses=True)
-try:
-    REDIS.ping()
-    LOGGER.info("[Harry] Your redis server is now alive!")
-except BaseException as an_error:
-    raise Exception(
-        "[Zeldris] Your redis server is not alive, please check again."
-    ) from an_error
 
-finally:
-    REDIS.ping()
-    LOGGER.info("[Harry] Your redis server is now alive!")
-
-# Telethon
-client = TelegramClient(MemorySession(), API_ID, API_HASH)
-updater = tg.Updater(
-    TOKEN,
-    workers=min(32, os.cpu_count() + 4),
-    request_kwargs={"read_timeout": 10, "connect_timeout": 10},
-)
+updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+telethn = TelegramClient("groupmenter", API_ID, API_HASH)
+pbot = Client("groupmenterrobot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
+DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
-WHITELIST_USERS = list(WHITELIST_USERS)
-SUPPORT_USERS = list(SUPPORT_USERS)
+WOLVES = list(WOLVES)
+DEMONS = list(DEMONS)
+TIGERS = list(TIGERS)
 
 # Load at end to ensure all prev variables have been set
-# pylint: disable=C0413
-from zeldris.modules.helper_funcs.handlers import CustomCommandHandler
+from Harry.modules.helper_funcs.handlers import (
+    CustomCommandHandler,
+    CustomMessageHandler,
+    CustomRegexHandler,
+)
 
-if CUSTOM_CMD and len(CUSTOM_CMD) >= 1:
-    tg.CommandHandler = CustomCommandHandler
-
-
-def spamfilters(text, user_id, chat_id):
-    # print("{} | {} | {}".format(text, user_id, chat_id))
-    if int(user_id) not in SPAMMERS:
-        return False
-
-    print("[Harry] This user is a spammer!")
-    return True
+# make sure the regex handler can take extra kwargs
+tg.RegexHandler = CustomRegexHandler
+tg.CommandHandler = CustomCommandHandler
+tg.MessageHandler = CustomMessageHandler
