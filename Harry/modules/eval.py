@@ -27,8 +27,8 @@ from contextlib import redirect_stdout, suppress
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler
 
-from zeldris import LOGGER, dispatcher
-from zeldris.modules.helper_funcs.chat_status import dev_plus
+from Harry import LOGGER, dispatcher
+from Harry.modules.helper_funcs.chat_status import dev_plus
 
 namespaces = {}
 
