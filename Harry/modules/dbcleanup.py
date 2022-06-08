@@ -23,9 +23,9 @@ from telegram import Bot, Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CallbackContext, CommandHandler, CallbackQueryHandler, Filters
 
-import zeldris.modules.no_sql.gban_db as db
-import zeldris.modules.no_sql.users_db as user_db
-from zeldris import dispatcher, DEV_USERS
+import Harry.modules.no_sql.gban_db as db
+import Harry.modules.no_sql.users_db as user_db
+from Harry import dispatcher, DEV_USERS
 
 
 def get_invalid_chats(bot: Bot, update: Update, remove: bool = False):
