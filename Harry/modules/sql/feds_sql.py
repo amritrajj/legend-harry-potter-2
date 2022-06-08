@@ -23,8 +23,8 @@ from sqlalchemy import Column, String, UnicodeText, Integer, Boolean
 from sqlalchemy.sql.sqltypes import BigInteger
 from telegram.error import BadRequest, Unauthorized
 
-from zeldris import dispatcher
-from zeldris.modules.sql import SESSION, BASE
+from Harry import dispatcher
+from Harry.modules.sql import SESSION, BASE
 
 
 class Federations(BASE):
