@@ -21,8 +21,8 @@ import threading
 
 from sqlalchemy import Column, String, Boolean, UnicodeText, Integer, func, distinct
 
-from zeldris.modules.helper_funcs.msg_types import Types
-from zeldris.modules.sql import SESSION, BASE
+from Harry.modules.helper_funcs.msg_types import Types
+from Harry.modules.sql import SESSION, BASE
 
 
 class Notes(BASE):
