@@ -27,22 +27,22 @@ from telegram import ParseMode, Message, Update, User
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, CallbackContext
 
-# from zeldris.modules.sql import warns_sql as warnssql
-import zeldris.modules.sql.blacklist_sql as blacklistsql
+# from Harry.modules.sql import warns_sql as warnssql
+import Harry.modules.sql.blacklist_sql as blacklistsql
 
-# from zeldris.modules.sql import cust_filters_sql as filtersql
-# import zeldris.modules.sql.welcome_sql as welcsql
-import zeldris.modules.sql.locks_sql as locksql
-import zeldris.modules.sql.notes_sql as sql
+# from Harry.modules.sql import cust_filters_sql as filtersql
+# import Harry.modules.sql.welcome_sql as welcsql
+import Harry.modules.sql.locks_sql as locksql
+import Harry.modules.sql.notes_sql as sql
 
-# from zeldris.modules.rules import get_rules
-import zeldris.modules.sql.rules_sql as rulessql
-from zeldris import dispatcher, LOGGER, OWNER_ID, MESSAGE_DUMP
-from zeldris.__main__ import DATA_IMPORT
-from zeldris.modules.connection import connected
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import user_admin
-from zeldris.modules.sql import disable_sql as disabledsql
+# from Harry.modules.rules import get_rules
+import Harry.modules.sql.rules_sql as rulessql
+from Harry import dispatcher, LOGGER, OWNER_ID, MESSAGE_DUMP
+from Harry.__main__ import DATA_IMPORT
+from Harry.modules.connection import connected
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import user_admin
+from Harry.modules.sql import disable_sql as disabledsql
 
 
 @user_admin
