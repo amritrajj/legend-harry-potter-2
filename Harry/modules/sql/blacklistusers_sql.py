@@ -20,7 +20,7 @@ import threading
 
 from sqlalchemy import Column, String, UnicodeText
 
-from zeldris.modules.sql import BASE, SESSION
+from Harry.modules.sql import BASE, SESSION
 
 
 class BlacklistUsers(BASE):
