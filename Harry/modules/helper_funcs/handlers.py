@@ -26,11 +26,11 @@ from pyrate_limiter import (
 )
 from telegram import Update
 
-import zeldris.modules.sql.blacklistusers_sql as sql
-from zeldris import LOGGER, DEV_USERS, SUPPORT_USERS, WHITELIST_USERS
+import Harry.modules.sql.blacklistusers_sql as sql
+from Harry import LOGGER, DEV_USERS, SUPPORT_USERS, WHITELIST_USERS
 
 try:
-    from zeldris import CUSTOM_CMD
+    from Harry import CUSTOM_CMD
 except BaseException:
     CUSTOM_CMD = False
 
