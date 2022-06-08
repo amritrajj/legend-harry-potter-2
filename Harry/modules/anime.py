@@ -31,8 +31,8 @@ from telegram import (
 )
 from telegram.ext import CallbackContext
 
-from zeldris import dispatcher
-from zeldris.modules.disable import DisableAbleCommandHandler
+from Harry import dispatcher
+from Harry.modules.disable import DisableAbleCommandHandler
 
 info_btn = "More Information"
 prequel_btn = "⬅️ Prequel"
