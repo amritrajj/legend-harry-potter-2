@@ -42,26 +42,26 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-from zeldris import dispatcher  # BAN_STICKER
-from zeldris.modules.disable import DisableAbleCommandHandler
-from zeldris.modules.helper_funcs.alternate import typing_action
-from zeldris.modules.helper_funcs.chat_status import (
+from Harry import dispatcher  # BAN_STICKER
+from Harry.modules.disable import DisableAbleCommandHandler
+from Harry.modules.helper_funcs.alternate import typing_action
+from Harry.modules.helper_funcs.chat_status import (
     is_user_admin,
     bot_admin,
     user_admin_no_reply,
     user_admin,
     can_restrict,
 )
-from zeldris.modules.helper_funcs.extraction import (
+from Harry.modules.helper_funcs.extraction import (
     extract_text,
     extract_user_and_text,
     extract_user,
 )
-from zeldris.modules.helper_funcs.filters import CustomFilters
-from zeldris.modules.helper_funcs.misc import split_message
-from zeldris.modules.helper_funcs.string_handling import split_quotes
-from zeldris.modules.log_channel import loggable
-from zeldris.modules.sql import warns_sql as sql
+from Harry.modules.helper_funcs.filters import CustomFilters
+from Harry.modules.helper_funcs.misc import split_message
+from Harry.modules.helper_funcs.string_handling import split_quotes
+from Harry.modules.log_channel import loggable
+from Harry.modules.sql import warns_sql as sql
 
 WARN_HANDLER_GROUP = 9
 CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
