@@ -23,7 +23,7 @@ import time
 from io import BytesIO
 from typing import Optional
 
-from telegram import ParseMode, Message, Update, User
+from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, CallbackContext
 

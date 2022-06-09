@@ -19,7 +19,7 @@
 import html
 from typing import Optional
 
-from telegram import ChatPermissions, Chat, Message, Update, User, ParseMode
+from telegram import ChatPermissions, Update, ParseMode
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
 from telegram.utils.helpers import mention_html

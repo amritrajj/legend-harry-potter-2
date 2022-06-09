@@ -18,12 +18,8 @@
 
 import html
 from typing import Optional
-
-from telegram import Chat
 from telegram import ChatPermissions
-from telegram import Message
 from telegram import Update
-from telegram import User
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler

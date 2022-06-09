@@ -27,7 +27,6 @@ from telegram import (
     ParseMode,
     User,
     Update,
-    CallbackQuery,
     Message,
     Chat,
 )

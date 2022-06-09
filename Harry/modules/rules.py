@@ -18,7 +18,7 @@
 
 from typing import Optional
 
-from telegram import Message, User, Update
+from telegram import Update
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, CallbackContext
