@@ -20,7 +20,7 @@ import html
 from typing import Optional
 
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton, Update
-from telegram import Message, Chat, User, ParseMode
+from telegram import Chat, ParseMode
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
     CallbackContext,

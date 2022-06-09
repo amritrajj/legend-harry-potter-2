@@ -29,7 +29,6 @@ from telegram import (
     InlineKeyboardButton,
     Update,
 )
-from telegram import Message
 from telegram.error import BadRequest
 from telegram.ext import (
     CallbackContext,
@@ -50,8 +49,7 @@ from Harry.modules.helper_funcs.misc import build_keyboard, revert_buttons
 from Harry.modules.helper_funcs.msg_types import get_note_type
 from Harry.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
-    markdown_to_html,
-)
+    )
 
 FILE_MATCHER = re.compile(r"^###file_id(!photo)?###:(.*?)(?:\s|$)")
 STICKER_MATCHER = re.compile(r"^###sticker(!photo)?###:")

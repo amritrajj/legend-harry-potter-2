@@ -30,8 +30,6 @@ import requests
 import wikipedia
 from requests import get
 from telegram import (
-    Message,
-    Chat,
     MessageEntity,
     InlineKeyboardMarkup,
     InlineKeyboardButton,

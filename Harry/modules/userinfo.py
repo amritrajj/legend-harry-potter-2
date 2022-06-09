@@ -19,7 +19,7 @@
 import html
 from typing import Optional
 
-from telegram import Message, User, Update
+from telegram import Update
 from telegram import ParseMode, MAX_MESSAGE_LENGTH
 from telegram.ext import CallbackContext
 from telegram.utils.helpers import escape_markdown

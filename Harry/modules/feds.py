@@ -28,8 +28,6 @@ from typing import Optional
 
 from telegram import (
     ParseMode,
-    Chat,
-    User,
     MessageEntity,
     InlineKeyboardMarkup,
     InlineKeyboardButton,
