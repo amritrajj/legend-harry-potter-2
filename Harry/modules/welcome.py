@@ -1079,7 +1079,6 @@ def user_captcha_button(update: Update, context: CallbackContext):
     user = update.effective_user
     query = update.callback_query
     bot = context.bot
-    # print(query.data)
     match = re.match(r"user_captchajoin_\(([\d\-]+),(\d+)\)_\((\d{4})\)", query.data)
     message = update.effective_message
     join_chat = int(match.group(1))

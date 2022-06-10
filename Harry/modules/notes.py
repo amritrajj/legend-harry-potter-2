@@ -178,7 +178,6 @@ def get(bot, update, notename, show_none=True, no_format=False):  # sourcery no-
                 parseMode = None
                 text += revert_buttons(buttons)
             else:
-                #  text = markdown_to_html(text)
                 keyb = build_keyboard(buttons)
 
             keyboard = InlineKeyboardMarkup(keyb)
