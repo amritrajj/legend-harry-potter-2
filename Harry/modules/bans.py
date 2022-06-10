@@ -133,7 +133,6 @@ def ban(update: Update, context: CallbackContext):  # sourcery no-metrics
             message.delete()
             return log
 
-        # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         bot.sendMessage(
             chat.id,
             reply,
@@ -296,7 +295,6 @@ def kick(update: Update, context: CallbackContext):
 
     res = chat.unban_member(user_id)  # unban on current user = kick
     if res:
-        # context.bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         context.bot.sendMessage(
             chat.id,
             "Until we meet again {}!.".format(

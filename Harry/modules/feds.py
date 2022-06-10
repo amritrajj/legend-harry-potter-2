@@ -71,7 +71,6 @@ from Harry.modules.helper_funcs.string_handling import markdown_parser
 #
 # Total spended for making this features is 68+ hours
 
-# LOGGER.info("Original federation module by MrYacha, reworked by Mizukito Akito (@peaktogoo) on Telegram.")
 
 # TODO: Fix Loads of code duplication
 
@@ -297,7 +296,6 @@ def leave_fed(update: Update, context: CallbackContext):
     fed_id = sql.get_fed_id(chat.id)
     fed_info = sql.get_fed_info(fed_id)
 
-    # administrators = chat.get_administrators().status
     getuser = context.bot.get_chat_member(chat.id, user.id).status
     if getuser in "creator" or user.id in DEV_USERS:
         if sql.chat_leave_fed(chat.id):
@@ -745,14 +743,6 @@ def fed_ban(update: Update, context: CallbackContext):  # sourcery no-metrics
                 pass
         # Also do not spam all fed admins
 
-        # send_to_list(bot, FEDADMIN,
-        # "<b>FedBan reason updated</b>" \
-        # "\n<b>Federation:</b> {}" \
-        # "\n<b>Federation Admin:</b> {}" \
-        # "\n<b>User:</b> {}" \
-        # "\n<b>User ID:</b> <code>{}</code>" \
-        # "\n<b>Reason:</b> {}".format(fed_name, mention_html(user.id, user.first_name), user_target, fban_user_id, reason),
-        # html=True)
 
         # Fban for fed subscriber
         subscriber = list(sql.get_subscriber(fed_id))
@@ -785,7 +775,6 @@ def fed_ban(update: Update, context: CallbackContext):  # sourcery no-metrics
                             )
                     except TelegramError:
                         pass
-        # send_message(update.effective_message, "Fedban Reason has been updated.")
         return
 
     fed_name = info["fname"]
@@ -1573,7 +1562,6 @@ def fed_import_bans(update: Update, context: CallbackContext):  # sourcery no-me
         return
 
     fed_id = sql.get_fed_id(chat.id)
-    # info = sql.get_fed_info(fed_id)
     getfed = sql.get_fed_info(fed_id)
 
     if not fed_id:

@@ -27,15 +27,11 @@ from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, CallbackContext
 
-# from Harry.modules.sql import warns_sql as warnssql
 import Harry.modules.sql.blacklist_sql as blacklistsql
 
-# from Harry.modules.sql import cust_filters_sql as filtersql
-# import Harry.modules.sql.welcome_sql as welcsql
 import Harry.modules.sql.locks_sql as locksql
 import Harry.modules.sql.notes_sql as sql
 
-# from Harry.modules.rules import get_rules
 import Harry.modules.sql.rules_sql as rulessql
 from Harry import dispatcher, LOGGER, OWNER_ID, MESSAGE_DUMP
 from Harry.__main__ import DATA_IMPORT
@@ -152,7 +148,6 @@ def export_data(update: Update, context: CallbackContext):  # sourcery no-metric
     if conn:
         chat = dispatcher.bot.getChat(conn)
         chat_id = conn
-        # chat_name = dispatcher.bot.getChat(conn).title
     else:
         if update.effective_message.chat.type == "private":
             update.effective_message.reply_text(
@@ -161,7 +156,6 @@ def export_data(update: Update, context: CallbackContext):  # sourcery no-metric
             return ""
         chat = update.effective_chat
         chat_id = update.effective_chat.id
-        # chat_name = update.effective_message.chat.title
 
     jam = time.time()
     new_jam = jam + 10800
@@ -187,21 +181,17 @@ def export_data(update: Update, context: CallbackContext):  # sourcery no-metric
 
     note_list = sql.get_all_chat_notes(chat_id)
     backup = {}
-    # button = ""
     buttonlist = []
     namacat = ""
     isicat = ""
-    # rules = ""
     count = 0
     countbtn = 0
     # Notes
     for note in note_list:
         count += 1
-        # getnote = sql.get_note(chat_id, note.name)
         namacat += "{}<###splitter###>".format(note.name)
         if note.msgtype == 1:
             tombol = sql.get_buttons(chat_id, note.name)
-            # keyb = []
             for btn in tombol:
                 countbtn += 1
                 if btn.same_line:

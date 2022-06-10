@@ -169,7 +169,6 @@ def lock(update: Update, context: CallbackContext) -> str:  # sourcery no-metric
                     context.bot, update, chat, user.id, need_admin=True
                 ):
                     chat = dispatcher.bot.getChat(conn)
-                    # chat_id = conn
                     chat_name = chat.title
                     text = "Locked all {} messages for non-admins in {}!".format(
                         ltype, chat_name
@@ -182,8 +181,6 @@ def lock(update: Update, context: CallbackContext) -> str:  # sourcery no-metric
                         )
                         return ""
                     chat = update.effective_chat
-                    # chat_id = update.effective_chat.id
-                    # chat_name = update.effective_message.chat.title
                     text = "Locked all {} messages for non-admins!".format(ltype)
                 sql.update_lock(chat.id, ltype, locked=True)
                 send_message(update.effective_message, text, parse_mode="markdown")
@@ -218,7 +215,6 @@ def lock(update: Update, context: CallbackContext) -> str:  # sourcery no-metric
                         return ""
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
-                    # chat_name = update.effective_message.chat.title
                     text = "Locked {} for all non-admins!".format(ltype)
 
                 current_permission = context.bot.getChat(chat_id).permissions

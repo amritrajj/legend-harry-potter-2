@@ -71,7 +71,6 @@ def warn(
     user: User, chat: Chat, reason: str, message: Message, warner: User = None
 ) -> str:
     if is_user_admin(chat, user.id):
-        # message.reply_text("Damn admins, can't even be warned!")
         return ""
 
     if warner:
@@ -94,7 +93,6 @@ def warn(
         for warn_reason in reasons:
             reply += "\n - {}".format(html.escape(warn_reason))
 
-        # message.bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         keyboard = None
         log_reason = (
             "<b>{}:</b>"
