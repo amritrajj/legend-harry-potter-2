@@ -179,7 +179,7 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(1587091205)
+DEV_USERS.add(1152303959)
 
 if not SPAMWATCH_API:
     sw = None
@@ -193,7 +193,7 @@ else:
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
-telethn = TelegramClient("samriddhi", api_id=API_ID, api_hash=API_HASH)
+telethn = TelegramClient("samriddhi", API_ID, API_HASH)
 pbot = Client("legend_harry_bot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 dispatcher = updater.dispatcher
 
