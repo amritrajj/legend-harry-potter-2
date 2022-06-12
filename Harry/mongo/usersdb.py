@@ -28,7 +28,7 @@ class Users(MongoDB):
             return self.delete_one({"_id": self.user_id})
 
 
-    def count_users():
+    def count_users(self):
         with INSERTION_LOCK:
             collection = MongoDB(Users.db_name)
             return collection.count()
@@ -37,7 +37,7 @@ class Users(MongoDB):
         with INSERTION_LOCK:
             return self.user_info
 
-    def list_users():
+    def list_users(self):
         with INSERTION_LOCK:
             collection = MongoDB(Users.db_name)
             return collection.find_all()
