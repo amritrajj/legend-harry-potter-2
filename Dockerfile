@@ -65,10 +65,10 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/Harry
-RUN git clone -b shiken https://github.com/amritraj2008/legend-harry-potter-2 /root/Harry
+RUN git clone -b master https://github.com/amritrajj/legend-harry-potter-2 /root/Harry
 WORKDIR /root/Harry
 
-#Copy config file to /root/GroupMenter/GroupMenter
+#Copy config file to /root/Harry/Harry
 COPY ./Harry/sample_config.py ./Harry/config.py* /root/Harry/Harry/
 
 ENV PATH="/home/bot/bin:$PATH"
