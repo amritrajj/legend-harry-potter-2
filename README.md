@@ -52,7 +52,7 @@ https://dashboard.heroku.com/new?template=https://github.com/amritraj2008/legend
 
 Please make sure to use python3.6, as I cannot guarantee everything will work as expected on older Python versions!
 This is because markdown parsing is done by iterating through a dict, which is ordered by default in 3.6.
-
+Okteto.com
 ### Configuration
 
 There are two possible ways of configuring your bot: a config.py file, or ENV variables.
